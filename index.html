@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find the Teddy - For Prerana 💖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: url('https://www.transparenttextures.com/patterns/notebook.png');
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      color: black;
+      overflow: hidden;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 400px;
+      margin: 50px auto;
+    }
+    .tile {
+      width: 120px;
+      height: 120px;
+      background-color: rgba(255, 105, 180, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 2px solid white;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .tile:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px white;
+    }
+    .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    #welcomeScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    #heartFrame {
+      background: url('https://m.media-amazon.com/images/S/aplus-media-library-service-media/c55b16e0-acc4-4573-a2ac-a60c1f421551.__CR0,0,800,600_PT0_SX800_V1___.png') no-repeat center;
+      background-size: contain;
+      width: 300px;
+      height: 300px;
+    }
+    #specialMessage {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      max-width: 350px;
+    }
+    #specialMessage img {
+      width: 250px;
+      height: auto;
+    }
+    #specialMessage p {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #closeMessage {
+      background: red;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    #closeMessage:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+  <div id="welcomeScreen">
+    <div id="heartFrame"></div>
+    <h1 class="text-3xl font-bold mt-4 text-pink-500">Welcome Prerana! 💖</h1>
+    <p class="text-lg text-pink-600">Happy Teddy Day! I made this for you. Enjoy finding your teddy! 🧸</p>
+  </div>
+
+  <h1 class="text-2xl font-bold mt-6 text-pink-400">✨ Find the Cute Teddy for <span class="text-pink-500">Prerana</span> ✨</h1>
+  
+  <div class="grid">
+    <div class="tile" onclick="checkTile(this, 1)"><img src="https://media.livewallpapers.com/images/high/cute-panda-galaxy-wallpaper.webp"></div>
+    <div class="tile" onclick="checkTile(this, 3)"><img src="https://homeharbour.in/cdn/shop/files/CuteTeddyBearSiliconeNightLight1_1200x1200.jpg"></div>
+    <div class="tile" onclick="checkTile(this, 7)"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-_1BVnjYPaWZyorLdrMZ92x9n30JaReCGQ&s"></div>
+    <div class="tile" onclick="checkTile(this, 9)"><img src="https://t4.ftcdn.net/jpg/11/53/42/45/360_F_1153424581_WnoQUBoLdLcd04fA2U8X5nG4fxpvY1cU.jpg"></div>
+    <div class="tile" onclick="checkTile(this, 10)"><img src="https://thumbs.dreamstime.com/b/cute-earth-day-character-holding-flowers-kawaii-art-style-345345175.jpg"></div>
+    <div class="tile" onclick="checkTile(this, 11)"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9lQREe3wwCTw9-FjEFdNBP9dUXsR5L5mxiQ"></div>
+    <div class="tile" onclick="checkTile(this, 2)"><img src="https://img.freepik.com/premium-vector/cute-fashion-cartoon-girl-sketchy-style_523600-314.jpg"></div>
+    <div class="tile" onclick="checkTile(this, 4)"><img src="https://www.sendgiftsahmedabad.com/pub/media/catalog/product/cache/fe2a752764b2352ecdbaaa90a203554f/1/9/1971.jpg"></div>
+    <div class="tile" onclick="checkTile(this, 5)"><img src="https://thumbs.dreamstime.com/z/fashion-designer-woman-beautiful-young-measuring-dress-mannequin-40983273.jpg"></div>
+  </div>
+
+  <div id="specialMessage">
+    <img src="https://i.giphy.com/v0WC4C7Yp67OE.webp" alt="Cute GIF">
+    <p>💖 You are a queen, Prerana! 💖</p>
+    <p>You deserve all the love and happiness! 😊</p>
+    <p>May your days be as bright as your smile! 😍</p>
+    <button id="closeMessage" onclick="document.getElementById('specialMessage').style.display='none'">Close</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(() => document.getElementById("welcomeScreen").style.display = "none", 3000);
+    });
+
+    let clickCount = 0;
+    function checkTile(tile, num) {
+      let img = tile.querySelector("img");
+      img.style.display = "block";
+      clickCount++;
+
+      if (clickCount === 4) {
+        setTimeout(() => document.getElementById("specialMessage").style.display = "block", 1000);
+      }
+
+      if (num === 3) {
+        setTimeout(() => alert("🎉 You found the Teddy! 🎉"), 1500);
+      } else {
+        setTimeout(() => img.style.display = "none", 2000);
+      }
+    }
+  </script>
+</body>
+</html>
